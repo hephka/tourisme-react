@@ -1,5 +1,5 @@
-export const Tourisme_address = "0x4346fDfc628431286fcC0a4Ef1890d51509C7073";
-//export const Tourisme_address = "0xc5b5181f9F9066bb7BC1611B95615AB797E91f69";
+export const Tourisme_address = "0x68B4Bb11f5273C4673C8A2E080B043bC64D13a75";
+
 
 export const Tourisme_abi = [
   {
@@ -44,7 +44,7 @@ export const Tourisme_abi = [
     "outputs": [
       {
         "internalType": "string",
-        "name": "nom",
+        "name": "name",
         "type": "string"
       },
       {
@@ -53,23 +53,8 @@ export const Tourisme_abi = [
         "type": "string"
       },
       {
-        "internalType": "string",
-        "name": "password",
-        "type": "string"
-      },
-      {
-        "internalType": "bool",
-        "name": "isClient",
-        "type": "bool"
-      },
-      {
         "internalType": "uint256",
-        "name": "no_reservation",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "date_registration",
+        "name": "dateRegistration",
         "type": "uint256"
       }
     ],
@@ -87,13 +72,33 @@ export const Tourisme_abi = [
     "name": "offers",
     "outputs": [
       {
-        "internalType": "enum Tourisme.Destination",
-        "name": "_dest",
-        "type": "uint8"
+        "internalType": "string",
+        "name": "destination",
+        "type": "string"
       },
       {
         "internalType": "uint256",
-        "name": "priceinTokens",
+        "name": "priceTransport",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "priceTravel",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "priceRestauration",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "priceActivity",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "priceTours",
         "type": "uint256"
       }
     ],
@@ -118,6 +123,55 @@ export const Tourisme_abi = [
     "name": "renounceOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "reservationByUser",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "isTransport",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "isTravel",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "isRestauration",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "isActivity",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "isTours",
+        "type": "bool"
+      },
+      {
+        "internalType": "uint256",
+        "name": "priceinTokens",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -150,23 +204,37 @@ export const Tourisme_abi = [
     "inputs": [
       {
         "internalType": "string",
-        "name": "_nom",
+        "name": "_name",
         "type": "string"
       },
       {
         "internalType": "string",
         "name": "_email",
         "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "_password",
-        "type": "string"
       }
     ],
     "name": "register",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_addr",
+        "type": "address"
+      }
+    ],
+    "name": "isRegistered",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -196,7 +264,7 @@ export const Tourisme_abi = [
         "components": [
           {
             "internalType": "string",
-            "name": "nom",
+            "name": "name",
             "type": "string"
           },
           {
@@ -205,23 +273,8 @@ export const Tourisme_abi = [
             "type": "string"
           },
           {
-            "internalType": "string",
-            "name": "password",
-            "type": "string"
-          },
-          {
-            "internalType": "bool",
-            "name": "isClient",
-            "type": "bool"
-          },
-          {
             "internalType": "uint256",
-            "name": "no_reservation",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "date_registration",
+            "name": "dateRegistration",
             "type": "uint256"
           }
         ],
@@ -236,56 +289,44 @@ export const Tourisme_abi = [
   {
     "inputs": [
       {
-        "internalType": "enum Tourisme.Destination",
+        "internalType": "string",
         "name": "_destination",
-        "type": "uint8"
+        "type": "string"
       },
-      {
-        "internalType": "bool",
-        "name": "_isSejour",
-        "type": "bool"
-      },
-      {
-        "internalType": "bool",
-        "name": "_isTransport",
-        "type": "bool"
-      },
-      {
-        "internalType": "bool",
-        "name": "_isRestauration",
-        "type": "bool"
-      },
-      {
-        "internalType": "bool",
-        "name": "_isActivities",
-        "type": "bool"
-      },
-      {
-        "internalType": "bool",
-        "name": "_isTours",
-        "type": "bool"
-      }
-    ],
-    "name": "choose_offer",
-    "outputs": [
       {
         "internalType": "uint256",
-        "name": "",
+        "name": "_priceTransport",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_priceTravel",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_priceRestauration",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_priceActivity",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_priceTours",
         "type": "uint256"
       }
     ],
+    "name": "addOffer",
+    "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_id",
-        "type": "uint256"
-      }
-    ],
-    "name": "getPrice",
+    "inputs": [],
+    "name": "offerId",
     "outputs": [
       {
         "internalType": "uint256",
@@ -309,9 +350,131 @@ export const Tourisme_abi = [
       {
         "components": [
           {
-            "internalType": "enum Tourisme.Destination",
-            "name": "_dest",
-            "type": "uint8"
+            "internalType": "string",
+            "name": "destination",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "priceTransport",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "priceTravel",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "priceRestauration",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "priceActivity",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "priceTours",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Tourisme.Offer",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "_isTransport",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "_isTravel",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "_isRestauration",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "_isActivities",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "_isTours",
+        "type": "bool"
+      }
+    ],
+    "name": "chooseOffer",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "reservationId",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      }
+    ],
+    "name": "getReservation",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "bool",
+            "name": "isTransport",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "isTravel",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "isRestauration",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "isActivity",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "isTours",
+            "type": "bool"
           },
           {
             "internalType": "uint256",
@@ -319,7 +482,7 @@ export const Tourisme_abi = [
             "type": "uint256"
           }
         ],
-        "internalType": "struct Tourisme.Offer",
+        "internalType": "struct Tourisme.Reservation",
         "name": "",
         "type": "tuple"
       }
